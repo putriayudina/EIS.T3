@@ -1,0 +1,22 @@
+// Deklarasi pin yang digunakan
+const int sensorPin = A0; // Sensor YL-69 terhubung ke pin analog A0
+
+void setup() {
+  Serial.begin(9600); // Inisialisasi komunikasi serial
+}
+
+void loop() {
+  // Baca nilai kelembaban tanah
+  int moisture = analogRead(sensorPin);
+
+  // Konversi nilai bacaan ke persentase kelembaban (0-100%)
+  int moisturePercent = map(moisture, 0, 1023, 0, 100);
+
+  // Tampilkan nilai kelembaban tanah pada Serial Monitor
+  Serial.print("Kelembaban Tanah: ");
+  Serial.print(moisturePercent);
+  Serial.println("%");
+
+  // Tunggu sebentar sebelum membaca nilai kembali
+  delay(1000);
+}
